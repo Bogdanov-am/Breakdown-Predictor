@@ -1,7 +1,7 @@
 ﻿#include <math.h>
 #include <windows.h>
 #include <stdlib.h>
-#include <wchar.h>
+
 
 void Pack(wchar_t FullFileNameOut[256], LONG Data[100], char FileHeader[12], int Count);
 void Depack(wchar_t FullFileNameIn[256], char FileHeader[12], LONG* Data, int& Count);

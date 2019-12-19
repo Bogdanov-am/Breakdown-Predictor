@@ -2,10 +2,6 @@
 #include <windows.h>
 #include <malloc.h>
 
-#include <iomanip>
-#include <iostream>
-#include <fstream>
-
 typedef struct tagHISTOGRAM {
 	int Type;
 	char Name[128];

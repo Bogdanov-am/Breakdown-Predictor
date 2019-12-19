@@ -138,12 +138,14 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="correlation.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="compress.cpp" />
     <ClCompile Include="MyAdd.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="compress.h" />
+    <ClInclude Include="correlation.h" />
     <ClInclude Include="MyAdd.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

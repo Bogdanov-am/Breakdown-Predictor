@@ -24,12 +24,18 @@
     <ClCompile Include="MyAdd.cpp">
       <Filter>Исходные файлы</Filter>
     </ClCompile>
+    <ClCompile Include="correlation.cpp">
+      <Filter>Исходные файлы</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="MyAdd.h">
       <Filter>Файлы заголовков</Filter>
     </ClInclude>
     <ClInclude Include="compress.h">
+      <Filter>Файлы заголовков</Filter>
+    </ClInclude>
+    <ClInclude Include="correlation.h">
       <Filter>Файлы заголовков</Filter>
     </ClInclude>
   </ItemGroup>
