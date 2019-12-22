@@ -151,8 +151,7 @@ void PrintData(LONG* Data, wchar_t *FileName, int Count) //вывод в тек�
 
 	int len = wcslen(FileName);
 	for (i = 0; i < 4; i++)
-		FileName[len - i] = L'\0';
-
+		FileName[len - i - 1] = L'\0';
 
 	//Создание пути для входных данных
 	wcscpy_s(FullDepacked, 256, FullFileName);
@@ -166,7 +165,6 @@ void PrintData(LONG* Data, wchar_t *FileName, int Count) //вывод в тек�
 	wcscat_s(TestDots, 256, FileName);
 	wcscat_s(TestDots, 256, L"-TestDots.txt");
 
-
 	std::ofstream T1(FullDepacked, std::ios::trunc);
 	std::ofstream T2(TestDots, std::ios::trunc);
 	T1.close();
@@ -174,7 +172,6 @@ void PrintData(LONG* Data, wchar_t *FileName, int Count) //вывод в тек�
 
 	std::ofstream F(FullDepacked, std::ios_base::app);
 	std::ofstream FF(TestDots, std::ios_base::app);
-
 
 	HISTOGRAM* H;
 	for (int k = 0; k < Count; k++) {

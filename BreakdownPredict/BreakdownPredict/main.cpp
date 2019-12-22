@@ -12,14 +12,15 @@ int main(int argc, wchar_t* argv[])
 	printf("Enter the file name: ");
 	wscanf_s(L"%lS", FileName, (unsigned)_countof(FileName));
 
-	Path(FileName, FullFileNameIn, FullFileNameOut);		//создание путей для файлов ввода и вывода 
+	Path(FileName, FullFileNameIn, FullFileNameOut);			//создание путей для файлов ввода и вывода 
 
 	printf("\n");
 	wprintf(L"Name of file was succesfully read: %lS", FullFileNameIn);
 
 	//создается массив гистограмм
 	LONG* Data = new LONG[100];
-	Count = 0; // количество гистограмм
+	// количество гистограмм
+	Count = 0;		
 
 	Depack(FullFileNameIn, FileHeader, Data, Count);
 
