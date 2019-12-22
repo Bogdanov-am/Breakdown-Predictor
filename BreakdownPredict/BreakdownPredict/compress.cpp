@@ -1,7 +1,7 @@
 ﻿#include "compress.h" 
 
 
-void* CompressHist(HISTOGRAM* H, int* Size)			//алгоритм упаковки
+void* CompressHist(HISTOGRAM* H, int* Size)												//алгоритм упаковки
 {
 	int Size0, Size1;
 	HISTOGRAM* H0;
@@ -10,7 +10,7 @@ void* CompressHist(HISTOGRAM* H, int* Size)			//алгоритм упаковк�
 	Size0 = sizeof(HISTOGRAM) - sizeof(LONG) + HistogramDataSize(H->NChannels, H->Type);
 	H0 = (HISTOGRAM*)GlobalAlloc(GMEM_FIXED, Size0);
 
-	memcpy(H0, H, Size0);			//копирование Size0 байтов из H в H0 
+	memcpy(H0, H, Size0);																//копирование Size0 байтов из H в H0 
 
 	ChangeByteOrder(&H0->Data[0], HistogramDataSize(H->NChannels, H->Type), 4, true);	//сдвиг байтов на 4 
 
@@ -73,7 +73,7 @@ int DefineVersion(HANDLE hFile, char* FileHeader)                               
 	}
 }
 
-int HistogramDataSize(int NChannels, int Type)                                  //Размер 1 гистограммы
+int HistogramDataSize(int NChannels, int Type)                                  //Размер одной гистограммы
 {
 	switch (Type >> 16)
 	{
@@ -240,14 +240,12 @@ void Sort(KNOT** pKnot, int left, int right)
 	i = left;
 	j = right;
 	comp = pKnot[(left + right) / 2];
-	do
-	{
+	do {
 		while ((pKnot[i]->Weight > comp->Weight) && (i < right))
 			i++;
 		while ((pKnot[j]->Weight) < comp->Weight && (j > left))
 			j--;
-		if (i <= j)
-		{
+		if (i <= j) {
 			value = pKnot[i];
 			pKnot[i] = pKnot[j];
 			pKnot[j] = value;
@@ -255,6 +253,7 @@ void Sort(KNOT** pKnot, int left, int right)
 			j--;
 		}
 	} while (i <= j);
+
 	if (left < j)
 		Sort(pKnot, left, j);
 	if (i < right)
@@ -372,30 +371,24 @@ bool CreateGraph(unsigned char* Table, GRAPH* Graph)
 	unsigned char Vertex;
 	unsigned short PrevVertex;
 
-	for (i = 0; i < 256; i++)
-	{
+	for (i = 0; i < 256; i++) {
 		Mask[i] = 512;
 	}
-	for (i = 0; i < 256; i++)
-	{
-		if (Table[i] != 255)
-		{
+
+	for (i = 0; i < 256; i++) {
+		if (Table[i] != 255) {
 			PrevVertex = i;
 			Vertex = Table[i];
-			do
-			{
-				if (Mask[Vertex] == 512)
-				{
+			do {
+				if (Mask[Vertex] == 512) {
 					Mask[Vertex] = PrevVertex;
 				}
+
 				Graph[Vertex].Vertex[Mask[Vertex] != PrevVertex] = PrevVertex;
 				PrevVertex = Vertex + 256;
 				Vertex = Table[PrevVertex];
-				if (Vertex == PrevVertex - 256)
-				{
-					return false;
-				}
 
+				if (Vertex == PrevVertex - 256) return false;
 			} while (Vertex != 255);
 		}
 	}
@@ -464,26 +457,25 @@ void* DecompressHoffman(void* inbuff, int SizeIn, int* SizeOut)
 	Table = InBuff;
 	memcpy(SizeOut, InBuff + 511, 4);
 	OutBuff = (unsigned char*)GlobalAlloc(GMEM_FIXED, *SizeOut);
-	if (!CreateGraph(Table, Graph))
-	{
-		return NULL;
-	}
+
+	if (!CreateGraph(Table, Graph)) return NULL;
+
 	inbuff = (void*)(InBuff + 511 + 4);
 	Index = 0;
-	for (i = 0; i < *SizeOut; i++)
-	{
+	for (i = 0; i < *SizeOut; i++) {
 		bool B;
 		B = GetBit(InBuff, Index);
 		Index++;
 		pGraph = &Graph[255];
-		while (pGraph->Vertex[B] > 255)
-		{
+
+		while (pGraph->Vertex[B] > 255) {
 			pGraph = &Graph[pGraph->Vertex[B] - 256];
 			B = GetBit(InBuff, Index);
 			Index++;
 		}
 		OutBuff[i] = (unsigned char)pGraph->Vertex[B];
 	}
+
 	return OutBuff;
 #undef InBuff
 }
