@@ -2,6 +2,12 @@
 
 int CorrelationAnalys(int size, float *X, float *Y, float R0)
 {
+
+
+
+
+
+
 	int i;
 	float sum = 0;
 

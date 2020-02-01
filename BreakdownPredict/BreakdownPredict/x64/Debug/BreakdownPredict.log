@@ -1,0 +1,12 @@
+﻿  correlation.cpp
+  main.cpp
+  compress.cpp
+  MyAdd.cpp
+D:\Visual Studio\Breakdown-Predictor\BreakdownPredict\BreakdownPredict\MyAdd.cpp(53,25): warning C4311: приведение типов: усечение указателя из "HISTOGRAM *" в "LONG"
+D:\Visual Studio\Breakdown-Predictor\BreakdownPredict\BreakdownPredict\MyAdd.cpp(53,25): warning C4302: приведение типов: усечение из "HISTOGRAM *" к "LONG"
+D:\Visual Studio\Breakdown-Predictor\BreakdownPredict\BreakdownPredict\MyAdd.cpp(97,26): warning C4312: приведение типов: преобразование из "LONG" в "HISTOGRAM *" большего размера
+D:\Visual Studio\Breakdown-Predictor\BreakdownPredict\BreakdownPredict\MyAdd.cpp(115,34): warning C4267: инициализация: преобразование из "size_t" в "int"; возможна потеря данных
+D:\Visual Studio\Breakdown-Predictor\BreakdownPredict\BreakdownPredict\MyAdd.cpp(152,28): warning C4267: инициализация: преобразование из "size_t" в "int"; возможна потеря данных
+D:\Visual Studio\Breakdown-Predictor\BreakdownPredict\BreakdownPredict\MyAdd.cpp(178,26): warning C4312: приведение типов: преобразование из "LONG" в "HISTOGRAM *" большего размера
+  Создание кода...
+  BreakdownPredict.vcxproj -> D:\Visual Studio\Breakdown-Predictor\BreakdownPredict\x64\Debug\BreakdownPredict.exe

@@ -187,16 +187,6 @@ void PrintData(LONG* Data, wchar_t *FileName, int Count) //вывод в тек�
 		F << "Tmin, Tmax " << H->Tmin << " " << H->Tmax << std::endl;
 		F << "Umin, Delta " << H->Umin << " " << H->Delta << std::endl;
 
-		/*F << H->Type << std::endl;
-		F << H->Name << std::endl;
-		F << H->Comment << std::endl;
-		F << H->Unit << std::endl;
-		F << H->NChannels << std::endl;
-		F << H->Tmin << std::endl;
-		F << H->Tmax << std::endl;
-		F << H->Umin << std::endl;
-		F << H->Delta << std::endl;*/
-
 		int Size0;
 		HISTOGRAM* H0;
 
