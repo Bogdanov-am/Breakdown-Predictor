@@ -1,4 +1,10 @@
 #include <math.h>
 
-int CorrelationAnalys(int, float*, float*, float);
-void ArrayAlignment();
+#include <windows.h>
+#include <stdlib.h>
+#include <fstream>
+#include <iomanip>
+#include <string>
+#include <vector>
+
+void CorrelationAnalysFull(LONG*, wchar_t*, int);

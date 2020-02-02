@@ -138,10 +138,11 @@ void Path(wchar_t *FileName, wchar_t *FullFileNameIn, wchar_t *FullFileNameOut)
 	wcscat_s(FullFileNameOut, 256, FileName);
 }
 
-void PrintData(LONG* Data, wchar_t *FileName, int Count) //вывод в текстовый файл
+void PrintData(LONG* Data, wchar_t* FileName, int Count) //вывод в текстовый файл
 {
 	int i;
 	wchar_t FullDepacked[256] = { 0 }, TestDots[256] = { 0 };
+	wchar_t FileNameWithoutSHT[80] = { 0 };
 
 	//Задание путей, для вывода данных
 	wchar_t FullFileName[256] = { 0 };
@@ -149,20 +150,21 @@ void PrintData(LONG* Data, wchar_t *FileName, int Count) //вывод в тек�
 	GetModuleFileNameW(NULL, FullFileName, sizeof(FullFileName) / sizeof(FullFileName[0]));
 	RemoveProgramName(FullFileName);
 
-	int len = wcslen(FileName);
+	wcscpy_s(FileNameWithoutSHT, 80, FileName);
+	int len = wcslen(FileNameWithoutSHT);
 	for (i = 0; i < 4; i++)
-		FileName[len - i - 1] = L'\0';
+		FileNameWithoutSHT[len - i - 1] = L'\0';
 
-	//Создание пути для входных данных
+	//Создание пути для выходных данных
 	wcscpy_s(FullDepacked, 256, FullFileName);
 	wcscat_s(FullDepacked, 256, L"Input\\");
-	wcscat_s(FullDepacked, 256, FileName);
+	wcscat_s(FullDepacked, 256, FileNameWithoutSHT);
 	wcscat_s(FullDepacked, 256, L"-FullDepacked.txt");
 
 	//Создание пути для выходных данных
 	wcscpy_s(TestDots, 256, FullFileName);
 	wcscat_s(TestDots, 256, L"Output\\");
-	wcscat_s(TestDots, 256, FileName);
+	wcscat_s(TestDots, 256, FileNameWithoutSHT);
 	wcscat_s(TestDots, 256, L"-TestDots.txt");
 
 	std::ofstream T1(FullDepacked, std::ios::trunc);
@@ -187,6 +189,14 @@ void PrintData(LONG* Data, wchar_t *FileName, int Count) //вывод в тек�
 		F << "Tmin, Tmax " << H->Tmin << " " << H->Tmax << std::endl;
 		F << "Umin, Delta " << H->Umin << " " << H->Delta << std::endl;
 
+		FF << "Type " << H->Type << std::endl;
+		FF << "Name " << H->Name << std::endl;
+		FF << "Comment " << H->Comment << std::endl;
+		FF << "Unit " << H->Unit << std::endl;
+		FF << "NChannels " << H->NChannels << std::endl;
+		FF << "Tmin, Tmax " << H->Tmin << " " << H->Tmax << std::endl;
+		FF << "Umin, Delta " << H->Umin << " " << H->Delta << std::endl;
+
 		int Size0;
 		HISTOGRAM* H0;
 
@@ -201,7 +211,7 @@ void PrintData(LONG* Data, wchar_t *FileName, int Count) //вывод в тек�
 		int check = 0;
 		int t = 0;
 		for (int i = 0; i < H->NChannels; i++) {
-			F << std::setw(5) << H->Data[i] << " ";
+			/*F << std::setw(5) << H->Data[i] << " ";*/
 			t++;
 			check++;
 

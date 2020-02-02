@@ -8,4 +8,4 @@ void Pack(wchar_t *FullFileNameOut, LONG Data[100], char FileHeader[12], int Cou
 void Depack(wchar_t *FullFileNameIn, char FileHeader[12], LONG* Data, int& Count);
 void RemoveProgramName(wchar_t* FullFileName);
 void Path(wchar_t *FileName, wchar_t *FullFileNameIn, wchar_t *FullFileNameOut);
-void PrintData(LONG* Data, wchar_t *FileName, int Count);
+void PrintData(LONG* Data, wchar_t* FileName, int Count);
