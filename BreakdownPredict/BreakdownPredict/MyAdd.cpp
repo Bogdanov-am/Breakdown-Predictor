@@ -5,7 +5,7 @@
 #define PI 3.14159265 
 
 
-void Depack(wchar_t *FullFileNameIn, char FileHeader[12], LONG* Data, int& Count) //распаковка .SHT в массив указателей Data
+void Depack(wchar_t FullFileNameIn[256], char *FileHeader, HISTOGRAM** Data, int& Count) //распаковка .SHT в массив указателей Data
 {
 	bool validRead;
 	HANDLE hFileIn;
@@ -50,8 +50,9 @@ void Depack(wchar_t *FullFileNameIn, char FileHeader[12], LONG* Data, int& Count
 					if (ReadFile(hFileIn, P, Size, &NBytes, NULL))					//считывание самих данных                         
 						if (NBytes == Size) {
 							H = DecompressHist(P, Size);							//распаковка данных
-							Data[i] = (LONG)H;
+							Data[i] = H;
 						}
+					
 					GlobalFree(P);
 				}
 		}
@@ -63,9 +64,8 @@ void Depack(wchar_t *FullFileNameIn, char FileHeader[12], LONG* Data, int& Count
 	CloseHandle(hFileIn);
 }
 
-void Pack(wchar_t *FullFileNameOut, LONG Data[100], char FileHeader[12], int Count) // упаковка данных из Data в .SHT файл
+void Pack(wchar_t FullFileNameOut[256], HISTOGRAM* Data[100], char FileHeader[12], int Count) // упаковка данных из Data в .SHT файл
 {
-
 	HISTOGRAM* H;
 	int Size;
 	void* P;
@@ -94,7 +94,7 @@ void Pack(wchar_t *FullFileNameOut, LONG Data[100], char FileHeader[12], int Cou
 
 	//сама суть - запись гистограмм
 	for (int i = 0; i < Count; i++) {
-		H = (HISTOGRAM*)Data[i];
+		H = Data[i];
 		if (H) {
 			printf("Packing histogram #%d...\n", i + 1);
 			P = CompressHist(H, &Size);
@@ -138,7 +138,7 @@ void Path(wchar_t *FileName, wchar_t *FullFileNameIn, wchar_t *FullFileNameOut)
 	wcscat_s(FullFileNameOut, 256, FileName);
 }
 
-void PrintData(LONG* Data, wchar_t* FileName, int Count) //вывод в текстовый файл
+void PrintData(HISTOGRAM* Data[100], wchar_t* FileName, int Count) //вывод в текстовый файл
 {
 	int i;
 	wchar_t FullDepacked[256] = { 0 }, TestDots[256] = { 0 };

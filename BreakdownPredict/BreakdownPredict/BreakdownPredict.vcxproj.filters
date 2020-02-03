@@ -29,13 +29,16 @@
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="MyAdd.h">
+    <ClInclude Include="include\compress.h">
       <Filter>Файлы заголовков</Filter>
     </ClInclude>
-    <ClInclude Include="compress.h">
+    <ClInclude Include="include\correlation.h">
       <Filter>Файлы заголовков</Filter>
     </ClInclude>
-    <ClInclude Include="correlation.h">
+    <ClInclude Include="include\MyAdd.h">
+      <Filter>Файлы заголовков</Filter>
+    </ClInclude>
+    <ClInclude Include="include\StreamTable.h">
       <Filter>Файлы заголовков</Filter>
     </ClInclude>
   </ItemGroup>
