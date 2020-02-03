@@ -18,13 +18,15 @@ int main(int argc, wchar_t* argv[])
 	wprintf(L"Name of file was succesfully read: %lS", FullFileNameIn);
 
 	//создается массив гистограмм
-	LONG* Data = new LONG[100];
+	HISTOGRAM** Data = new HISTOGRAM*[100];
 	// количество гистограмм
 	Count = 0;		
 
 	Depack(FullFileNameIn, FileHeader, Data, Count);
 
-	PrintData(Data, FileName, Count);
+	/*PrintData(Data, FileName, Count);*/
+	/*CorrelationAnalysFull(Data, FileName, Count);*/
+
 
 	Pack(FullFileNameOut, Data, FileHeader, Count);
 
