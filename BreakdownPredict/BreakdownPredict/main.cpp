@@ -25,13 +25,17 @@ int main(int argc, wchar_t* argv[])
 	Depack(FullFileNameIn, FileHeader, Data, Count);
 
 	/*PrintData(Data, FileName, Count);*/
-	/*CorrelationAnalysFull(Data, FileName, Count);*/
+	CorrelationAnalysFull(Data, FileName, Count);
 
 
 	Pack(FullFileNameOut, Data, FileHeader, Count);
 
 	s = getchar();
 	s = getchar();
+
+	for (int i = 0; i < 2; i++)
+		delete[] Data[i];
+	delete[] Data;
 
 	return 0;
 }

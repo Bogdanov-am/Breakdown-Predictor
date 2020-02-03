@@ -1,5 +1,5 @@
-﻿#include "compress.h" 
-
+﻿#pragma once
+#include "compress.h" 
 
 void* CompressHist(HISTOGRAM* H, int* Size)												//алгоритм упаковки
 {

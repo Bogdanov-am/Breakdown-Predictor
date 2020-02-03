@@ -1,4 +1,5 @@
-﻿#include <cstdio>
+﻿#pragma once
+#include <cstdio>
 #include <windows.h>
 #include <malloc.h>
 

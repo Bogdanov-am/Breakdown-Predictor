@@ -4,8 +4,8 @@
 #include <stdlib.h>
 #include <fstream>
 #include <iomanip>
-#include <string>
 #include <vector>
+#include "compress.h"
 
-void CorrelationAnalysFull(HISTOGRAM* Data[100], wchar_t*, int);
+void CorrelationAnalysFull(HISTOGRAM* Data[100], wchar_t FileName[80], int Count);
 void PrintTable(std::ofstream&, int, std::vector<int>, float**);

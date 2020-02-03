@@ -1,5 +1,5 @@
 ﻿
-#include "compress.h" 
+
 #include "MyAdd.h" 
 
 #define PI 3.14159265 
