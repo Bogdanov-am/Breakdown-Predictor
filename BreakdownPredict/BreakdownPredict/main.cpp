@@ -28,14 +28,13 @@ int main(int argc, wchar_t* argv[])
 	CorrelationAnalysFull(Data, FileName, Count);
 
 
-	Pack(FullFileNameOut, Data, FileHeader, Count);
+	/*Pack(FullFileNameOut, Data, FileHeader, Count);*/
 
-	s = getchar();
-	s = getchar();
-
-	for (int i = 0; i < 2; i++)
-		delete[] Data[i];
 	delete[] Data;
+
+	s = getchar();
+	s = getchar();
+
 
 	return 0;
 }

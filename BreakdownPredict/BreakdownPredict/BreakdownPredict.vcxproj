@@ -99,7 +99,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>D:\Visual Studio\Breakdown-Predictor\BreakdownPredict\BreakdownPredict\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\Users\bogda\source\repos\Bogdanov-am\Breakdown-Predictor\BreakdownPredict\BreakdownPredict\include;D:\Visual Studio\Breakdown-Predictor\BreakdownPredict\BreakdownPredict\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
     </ClCompile>
     <Link>
@@ -150,8 +150,11 @@
   <ItemGroup>
     <ClInclude Include="include\compress.h" />
     <ClInclude Include="include\correlation.h" />
-    <ClInclude Include="include\StreamTable.h" />
     <ClInclude Include="include\MyAdd.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="..\x64\Debug\Correlation\sht38404-corr.txt" />
+    <Text Include="..\x64\Debug\Selected for analysis\Selected.txt" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

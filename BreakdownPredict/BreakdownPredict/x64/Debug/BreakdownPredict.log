@@ -1,4 +1,5 @@
 ﻿  correlation.cpp
-D:\Visual Studio\Breakdown-Predictor\BreakdownPredict\BreakdownPredict\correlation.cpp(22,38): warning C4267: инициализация: преобразование из "size_t" в "int"; возможна потеря данных
-D:\Visual Studio\Breakdown-Predictor\BreakdownPredict\BreakdownPredict\correlation.cpp(66,36): warning C4267: =: преобразование из "size_t" в "int"; возможна потеря данных
-  BreakdownPredict.vcxproj -> D:\Visual Studio\Breakdown-Predictor\BreakdownPredict\x64\Debug\BreakdownPredict.exe
+C:\Users\bogda\source\repos\Bogdanov-am\Breakdown-Predictor\BreakdownPredict\BreakdownPredict\correlation.cpp(30,38): warning C4267: инициализация: преобразование из "size_t" в "int"; возможна потеря данных
+C:\Users\bogda\source\repos\Bogdanov-am\Breakdown-Predictor\BreakdownPredict\BreakdownPredict\correlation.cpp(77,36): warning C4267: =: преобразование из "size_t" в "int"; возможна потеря данных
+C:\Users\bogda\source\repos\Bogdanov-am\Breakdown-Predictor\BreakdownPredict\BreakdownPredict\correlation.cpp(136,33): warning C4244: =: преобразование "long double" в "float", возможна потеря данных
+  BreakdownPredict.vcxproj -> C:\Users\bogda\Source\Repos\Bogdanov-am\Breakdown-Predictor\BreakdownPredict\x64\Debug\BreakdownPredict.exe

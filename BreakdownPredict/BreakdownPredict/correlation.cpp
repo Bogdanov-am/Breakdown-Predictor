@@ -2,12 +2,20 @@
 #include "correlation.h"
 #include "MyAdd.h" 
 #include <sstream>
-#include "StreamTable.h"
+#include <iomanip>
+#include <iostream>
+
 
 void CorrelationAnalysFull(HISTOGRAM* Data[100], wchar_t FileName[80], int Count) //вывод в текстовый файл
 {
 	std::vector<int> SelectedHistogram;
 	int NumAnal;
+	std::string a;
+
+	long double A, B, C;
+	A = 0;
+	B = 0;
+	C = 0;
 
 	wchar_t ListForAnalysis[256] = { 0 }, Correlations[256] = { 0 };
 	wchar_t FileNameWithoutSHT[80] = { 0 };
@@ -35,7 +43,7 @@ void CorrelationAnalysFull(HISTOGRAM* Data[100], wchar_t FileName[80], int Count
 	wcscat_s(Correlations, 256, L"-corr.txt");
 
 	std::ifstream InRead(ListForAnalysis, std::ios_base::in);
-	std::ofstream OutWrite(Correlations, std::ios::trunc | std::ios_base::app);
+	std::ofstream OutWrite(Correlations, std::ios_base::out | std::ios::trunc);
 
 	HISTOGRAM* H1;
 	HISTOGRAM* H2;
@@ -43,32 +51,35 @@ void CorrelationAnalysFull(HISTOGRAM* Data[100], wchar_t FileName[80], int Count
 	InRead >> NumAnal;
 	
 	std::string* NameHistogram = new std::string[NumAnal];
+	std::getline(InRead, a);
 
 	for (int i = 0; i < NumAnal; i++) {
 		std::getline(InRead, NameHistogram[i]);
 	}
 
-	for (int k = 0; k < Count; k++) {
-		H1 = Data[k];
-		for (int i = 0; i < NumAnal; i++)
-			if (strcmp(NameHistogram[i].c_str(), H1->Name) == 0) 
-				SelectedHistogram.push_back(k);	
-
+	for (int i = 0; i < NumAnal; i++)
+		for (int k = 0; k < Count; k++) {
+			H1 = Data[k];
+		
+			if (strcmp(NameHistogram[i].c_str(), H1->Name) == 0) {
+				SelectedHistogram.push_back(k);
+				break;
+			}
 	}
 
 	for (const auto& k : SelectedHistogram) {
 		H1 = Data[k];
-		OutWrite << H1->Name << " in table as " << k << std::endl;
+		OutWrite << H1->Name << " in table as " << k + 1 << std::endl;
 	}
 
 	OutWrite << std::endl << std::endl;
 
 	NumAnal = SelectedHistogram.size();
 
-	// динамическое создание двумерного массива вещественных чисел на десять элементов
+	// динамическое создание двумерного массива 
 	if (NumAnal > 1) {
 		float** TableCorrelations = new float* [NumAnal];
-		for (int i = 0; i < 2; i++)
+		for (int i = 0; i < NumAnal; i++)
 			TableCorrelations[i] = new float[NumAnal];
 
 
@@ -101,27 +112,32 @@ void CorrelationAnalysFull(HISTOGRAM* Data[100], wchar_t FileName[80], int Count
 				ChangeByteOrder(&H0->Data[0], HistogramDataSize(H2->NChannels, H2->Type), 4, true);
 				GlobalFree(H0);
 
-				if (H1->NChannels == H2->NChannels) {
-					float A, B, C;
-					A = 0;
-					B = 0;
-					C = 0;
+				std::cout << "Calculation #" << SelectedHistogram[i] + 1 << "_#" << SelectedHistogram[j] + 1 << "\n";
 
+				int n;
+				if (H1->NChannels >= H2->NChannels) {
+					n = H1->NChannels / H2->NChannels;
+					std::cout << n << "\n";
 					for (int count = 0; count < H2->NChannels; count++) {
-						A += H1->Data[i] * H1->Data[i];
-						B += H2->Data[i] * H2->Data[i];
-						C += H1->Data[i] * H2->Data[i];
+						A += static_cast<long double>(H1->Data[i*n]) * static_cast<long double>(H1->Data[i*n]);
+						B += static_cast<long double>(H2->Data[i]) * static_cast<long double>(H2->Data[i]);
+						C += static_cast<long double>(H1->Data[i*n]) * static_cast<long double>(H2->Data[i]);
 					}
-
-					TableCorrelations[i][j] = C / (sqrt(abs(A)) * sqrt(abs(B)));
-				}
-
+				} 
 				else {
-					printf("Histogram sizes do not match! #%d...#%d\n", i, j);
+					n = H2->NChannels / H1->NChannels;
+					std::cout << n << "\n";
+					for (int count = 0; count < H1->NChannels; count++) {
+						A += static_cast<long double>(H1->Data[i]) * static_cast<long double>(H1->Data[i]);
+						B += static_cast<long double>(H2->Data[i*n]) * static_cast<long double>(H2->Data[i*n]);
+						C += static_cast<long double>(H1->Data[i]) * static_cast<long double>(H2->Data[i*n]);
+					}
 				}
-
+				TableCorrelations[i][j] = C / (sqrt(abs(A)) * sqrt(abs(B)));
 			}
 		}
+
+		std::cout << "Success";
 
 		PrintTable(OutWrite, NumAnal, SelectedHistogram, TableCorrelations);
 
@@ -137,19 +153,22 @@ void CorrelationAnalysFull(HISTOGRAM* Data[100], wchar_t FileName[80], int Count
 
 
 void PrintTable(std::ofstream& a, int N, std::vector<int> vec, float** Array) {
-	StreamTable tb(a);
-	tb.AddCol(5);
 
+	a << std::setw(4) << "X" << std::setw(2) << "|";
 	for (int i = 0; i < N; i++)
-		tb.AddCol(5);
-	tb << "#";
-	for (int i = 0; i < N; i++)
-		tb << vec[i];
+		a << std::setw(7) << vec[i] + 1;
+	a << "\n";
+
+	for (int i = 0; i < N * 7 + 2 + 4; i++)
+		a  << "-";
+	a << "\n";
 
 	for (int i = 0; i < N; i++) {
-		tb << vec[i];
-		for (int j = 0; j < N; j++) {
-			tb << Array[i][j];
-		}
+		a << std::setw(4) << vec[i] + 1 << std::setw(2) << "|";
+		for (int j = 0; j < i + 1; j++)
+			a << std::setw(7) << 0;
+		for (int j = i + 1; j < N; j++) 
+			a << std::setw(7) << std::setprecision(3) << Array[i][j];
+		a << "\n";
 	}
 }
