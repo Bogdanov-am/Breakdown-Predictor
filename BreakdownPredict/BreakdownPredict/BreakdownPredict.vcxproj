@@ -20,7 +20,7 @@
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>
-    <ProjectGuid>{3E39D523-EC89-4945-96F3-73D7CA6D1637}</ProjectGuid>
+    <ProjectGuid>{C73146FF-92AD-436F-8C5D-1CCB1D9E36E5}</ProjectGuid>
     <RootNamespace>BreakdownPredict</RootNamespace>
     <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
@@ -99,14 +99,12 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>C:\Users\bogda\source\repos\Bogdanov-am\Breakdown-Predictor\BreakdownPredict\BreakdownPredict\include;D:\Visual Studio\Breakdown-Predictor\BreakdownPredict\BreakdownPredict\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
-      <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
+      <AdditionalIncludeDirectories>C:\Users\bogda\Desktop\TheNewBeginnig\BreakdownPredict\BreakdownPredict\headers;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalLibraryDirectories>%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
-      <AdditionalDependencies>%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>C:\Users\bogda\Desktop\TheNewBeginnig\BreakdownPredict\BreakdownPredict\headers;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
@@ -142,19 +140,17 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="correlation.cpp" />
     <ClCompile Include="main.cpp" />
-    <ClCompile Include="compress.cpp" />
-    <ClCompile Include="MyAdd.cpp" />
+    <ClCompile Include="source\compress.cpp" />
+    <ClCompile Include="source\correlation.cpp" />
+    <ClCompile Include="source\CreateData.cpp" />
+    <ClCompile Include="source\MyAdd.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="include\compress.h" />
-    <ClInclude Include="include\correlation.h" />
-    <ClInclude Include="include\MyAdd.h" />
-  </ItemGroup>
-  <ItemGroup>
-    <Text Include="..\x64\Debug\Correlation\sht38404-corr.txt" />
-    <Text Include="..\x64\Debug\Selected for analysis\Selected.txt" />
+    <ClInclude Include="headers\compress.h" />
+    <ClInclude Include="headers\correlation.h" />
+    <ClInclude Include="headers\CreateData.h" />
+    <ClInclude Include="headers\MyAdd.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

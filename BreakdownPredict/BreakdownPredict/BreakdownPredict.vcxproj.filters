@@ -18,33 +18,31 @@
     <ClCompile Include="main.cpp">
       <Filter>Исходные файлы</Filter>
     </ClCompile>
-    <ClCompile Include="compress.cpp">
+    <ClCompile Include="source\compress.cpp">
       <Filter>Исходные файлы</Filter>
     </ClCompile>
-    <ClCompile Include="MyAdd.cpp">
+    <ClCompile Include="source\correlation.cpp">
       <Filter>Исходные файлы</Filter>
     </ClCompile>
-    <ClCompile Include="correlation.cpp">
+    <ClCompile Include="source\CreateData.cpp">
+      <Filter>Исходные файлы</Filter>
+    </ClCompile>
+    <ClCompile Include="source\MyAdd.cpp">
       <Filter>Исходные файлы</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="include\compress.h">
+    <ClInclude Include="headers\compress.h">
       <Filter>Файлы заголовков</Filter>
     </ClInclude>
-    <ClInclude Include="include\correlation.h">
+    <ClInclude Include="headers\correlation.h">
       <Filter>Файлы заголовков</Filter>
     </ClInclude>
-    <ClInclude Include="include\MyAdd.h">
+    <ClInclude Include="headers\CreateData.h">
       <Filter>Файлы заголовков</Filter>
     </ClInclude>
-  </ItemGroup>
-  <ItemGroup>
-    <Text Include="..\x64\Debug\Selected for analysis\Selected.txt">
-      <Filter>Исходные файлы</Filter>
-    </Text>
-    <Text Include="..\x64\Debug\Correlation\sht38404-corr.txt">
-      <Filter>Исходные файлы</Filter>
-    </Text>
+    <ClInclude Include="headers\MyAdd.h">
+      <Filter>Файлы заголовков</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>
