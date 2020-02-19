@@ -1,2 +1,0 @@
-C:/Users/bogda/source/repos/Bogdanov-am/Breakdown-Predictor/BreakdownPredict/BreakdownPredict/library/out/build/x64-Debug/CMakeFiles/edit_cache.dir
-C:/Users/bogda/source/repos/Bogdanov-am/Breakdown-Predictor/BreakdownPredict/BreakdownPredict/library/out/build/x64-Debug/CMakeFiles/rebuild_cache.dir

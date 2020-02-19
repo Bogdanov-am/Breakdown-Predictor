@@ -1,13 +1,16 @@
 ﻿#include "compress.h" 
 #include "MyAdd.h" 
 #include "correlation.h"
+#include <iostream>
+#include <iomanip>
+#include <OpenXLSX/OpenXLSX.h>
 
 int main(int argc, wchar_t* argv[]) 
 {
 	wchar_t FullFileName[256] = { 0 }, FileName[80] = { 0 }, FullFileNameIn[256] = { 0 }, FullFileNameOut[256] = { 0 };
 	char FileHeader[12] = { 0 };
 	char s;
-	int Count;
+	int Count; 
 
 	printf("Enter the file name: ");
 	wscanf_s(L"%lS", FileName, (unsigned)_countof(FileName));

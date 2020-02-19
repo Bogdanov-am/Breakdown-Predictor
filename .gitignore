@@ -3,7 +3,6 @@
 ################################################################################
 
 /.vs
-/BreakdownPredict/.vs/BreakdownPredict/v16
-/BreakdownPredict/Debug
-/BreakdownPredict/BreakdownPredict/Debug
+/BreakdownPredict/.vs
 /BreakdownPredict/BreakdownPredict/out
+/BreakdownPredict/BreakdownPredict/x64
