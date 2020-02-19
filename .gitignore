@@ -1,0 +1,8 @@
+﻿################################################################################
+# Данный GITIGNORE-файл был автоматически создан Microsoft(R) Visual Studio.
+################################################################################
+
+/.vs
+/BreakdownPredict/.vs
+/BreakdownPredict/BreakdownPredict/out
+/BreakdownPredict/BreakdownPredict/x64
