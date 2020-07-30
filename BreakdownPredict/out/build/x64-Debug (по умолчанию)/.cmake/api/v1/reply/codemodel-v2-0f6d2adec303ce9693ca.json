@@ -1,0 +1,154 @@
+{
+	"configurations" : 
+	[
+		{
+			"directories" : 
+			[
+				{
+					"build" : ".",
+					"childIndexes" : 
+					[
+						1
+					],
+					"minimumCMakeVersion" : 
+					{
+						"string" : "2.8"
+					},
+					"projectIndex" : 0,
+					"source" : ".",
+					"targetIndexes" : 
+					[
+						0
+					]
+				},
+				{
+					"build" : "OpenXLSX",
+					"childIndexes" : 
+					[
+						2
+					],
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.12"
+					},
+					"parentIndex" : 0,
+					"projectIndex" : 1,
+					"source" : "OpenXLSX"
+				},
+				{
+					"build" : "OpenXLSX/library",
+					"childIndexes" : 
+					[
+						3,
+						4,
+						5
+					],
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.12"
+					},
+					"parentIndex" : 1,
+					"projectIndex" : 1,
+					"source" : "OpenXLSX/library"
+				},
+				{
+					"build" : "OpenXLSX/library/pugixml",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.12"
+					},
+					"parentIndex" : 2,
+					"projectIndex" : 1,
+					"source" : "OpenXLSX/library/pugixml"
+				},
+				{
+					"build" : "OpenXLSX/library/zippy",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.12"
+					},
+					"parentIndex" : 2,
+					"projectIndex" : 1,
+					"source" : "OpenXLSX/library/zippy"
+				},
+				{
+					"build" : "OpenXLSX/library/openxlsx",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.12"
+					},
+					"parentIndex" : 2,
+					"projectIndex" : 1,
+					"source" : "OpenXLSX/library/openxlsx",
+					"targetIndexes" : 
+					[
+						1
+					]
+				}
+			],
+			"name" : "Debug",
+			"projects" : 
+			[
+				{
+					"childIndexes" : 
+					[
+						1
+					],
+					"directoryIndexes" : 
+					[
+						0
+					],
+					"name" : "BreakdownPredict",
+					"targetIndexes" : 
+					[
+						0
+					]
+				},
+				{
+					"directoryIndexes" : 
+					[
+						1,
+						2,
+						3,
+						4,
+						5
+					],
+					"name" : "OpenXLSX",
+					"parentIndex" : 0,
+					"targetIndexes" : 
+					[
+						1
+					]
+				}
+			],
+			"targets" : 
+			[
+				{
+					"directoryIndex" : 0,
+					"id" : "BreakdownPredict::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-BreakdownPredict-Debug-737301de7ef5211a1041.json",
+					"name" : "BreakdownPredict",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 5,
+					"id" : "OpenXLSX::@a2c88c2bc102054392d0",
+					"jsonFile" : "target-OpenXLSX-Debug-77f984d8b73693fb5490.json",
+					"name" : "OpenXLSX",
+					"projectIndex" : 1
+				}
+			]
+		}
+	],
+	"kind" : "codemodel",
+	"paths" : 
+	{
+		"build" : "D:/Visual Studio/Breakdown-Predictor/BreakdownPredict/out/build/x64-Debug (по умолчанию)",
+		"source" : "D:/Visual Studio/Breakdown-Predictor/BreakdownPredict"
+	},
+	"version" : 
+	{
+		"major" : 2,
+		"minor" : 0
+	}
+}
